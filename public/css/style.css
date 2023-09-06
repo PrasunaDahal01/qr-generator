@@ -58,13 +58,13 @@ select {
 .qrfooter {
   margin-top: 25px;
   cursor: pointer;
-  color: azure;
   border-radius: 8px;
-  justify-content: center;
+  margin-left: 70px;
 }
 
 .qrfooter a {
   background-color: #e25e3e;
+  color: azure;
   text-decoration: none;
   padding: 10px 20px;
   border-radius: 18px;
