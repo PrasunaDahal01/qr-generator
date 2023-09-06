@@ -56,17 +56,38 @@ select {
 }
 
 .qrfooter {
-  margin-top: 25px;
+  margin-top: 30px;
   cursor: pointer;
   border-radius: 8px;
   margin-left: 70px;
 }
 
-.qrfooter a {
+.qrfooter .footer2 {
   background-color: #e25e3e;
   color: azure;
   text-decoration: none;
   padding: 10px 20px;
   border-radius: 18px;
   font-weight: 600;
+}
+
+.qrfooter button {
+  margin-top: 20px;
+  border-color: #102c57;
+}
+
+.qrBody {
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.qrBody img {
+  max-width: 100%;
+  max-height: 100%;
+  margin-block: 10px;
+  padding: 20px;
+  border: 0.5px;
+  border: 0.5p solid #dad4b5;
+  border-radius: 18px;
 }

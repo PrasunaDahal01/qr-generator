@@ -4,9 +4,10 @@
 const path = require("path");
 const qrcode = require("qrcode");
 class Qr {
-  async generateQr(text) {
+  async generateQr(body) {
+    console.log("body", body);
     //function to generate QR npm package
-    const code = await qrcode.toDataURL(req.body.text);
+    const code = await qrcode.toDataURL(body.text);
     return code;
   }
 }

@@ -23,33 +23,36 @@
     <div class="box">
       <div class="qrHeader">
         <h1>QR Code Generator</h1>
-        <input
-          type="text"
-          placeholder="Type your text or URL"
-          id="qrText"
-          required
-        />
-        <div>
-          <label for="Sizes">Select Size: </label>
-          <select id="sizes">
-            <option value="100">100 x 100</option>
-            <option value="200">200 x 200</option>
-            <option value="300">300 x 300</option>
-            <option value="400">400 x 400</option>
-            <option value="500">500 x 500</option>
-            <option value="600">600 x 600</option>
-            <option value="700">700 x 700</option>
-            <option value="800">800 x 800</option>
-            <option value="900">900 x 900</option>
-            <option value="1000">1000 x 1000</option>
-          </select>
-        </div>
+        <form action="/api/v1/qr" method="post" 
+        >
+          <input
+            type="text"
+            name="name"
+            placeholder="Type your text or URL"
+            id="qrText"
+            required
+          />
+          <div>
+            <label for="Sizes">Select Size: </label>
+            <select id="sizes">
+              <option value="100">100 x 100</option>
+              <option value="200">200 x 200</option>
+              <option value="300">300 x 300</option>
+              <option value="400">400 x 400</option>
+              <option value="500">500 x 500</option>
+              <option value="600">600 x 600</option>
+              <option value="700">700 x 700</option>
+              <option value="800">800 x 800</option>
+              <option value="900">900 x 900</option>
+              <option value="1000">1000 x 1000</option>
+            </select>
+          </div>
+          <div class="qrfooter">
+            <button type="submit" class="footer2">Generate QR CODE</button>
+          </div>
+        </form>
       </div>
-
-      <div class="qrBody"></div>
-      <div class="qrfooter">
-        <a href="" id="generateBtn">Generate QR code</a>
-      </div>
+      <div class="qrBody">
     </div>
   </body>
 </html>
