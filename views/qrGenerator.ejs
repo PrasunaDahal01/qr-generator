@@ -50,12 +50,12 @@
       async function getQrData() {
   const qrText = document.getElementById("qrText").value;
   
-  const emailbutton = document.getElementById("mail");
-
+  const email = document.getElementById("mail");
+  const mailbutton =document.getElementbyId("mailbtn");
 
   if (qrText.trim() === "") {
     alert("Please enter text or URL before generating QR CODE.");
-  }
+  } 
   else {
     const res = await fetch("/api/v1/qr", {
       method: "POST",
@@ -67,7 +67,8 @@
     const data = await res.json();
     console.log({ data });
     document.getElementById("base64image").src = data.qr;
-    emailbutton.style.display = "block";
+    email.style.display = "block";
+    mailbutton.style.display = "block";
   }
 }
 async function getMailData() {
@@ -77,16 +78,15 @@ async function getMailData() {
     alert("Please enter your Email ID.")
   } 
   else{
+    const qr = document.getElementByID("base64image").src;
     const res = await fetch("/api/v1/mail", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name: qrText }),
+      body: JSON.stringify({ qrCode:qr, email:email}),
     });
     const data = await res.json();
-    emailbutton.style.display = "block";
-
   }
 
 }
