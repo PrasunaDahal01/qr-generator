@@ -49,10 +49,8 @@
     <script>
       async function getQrData() {
   const qrText = document.getElementById("qrText").value;
-  
-  const email = document.getElementById("mail");
-  const mailbutton =document.getElementbyId("mailbtn");
-
+  const emailbutton = document.getElementById("mail");
+  const emailinput=document.getElementById("mail");
   if (qrText.trim() === "") {
     alert("Please enter text or URL before generating QR CODE.");
   } 
@@ -67,8 +65,8 @@
     const data = await res.json();
     console.log({ data });
     document.getElementById("base64image").src = data.qr;
-    email.style.display = "block";
-    mailbutton.style.display = "block";
+    emailbutton.style.display = "block";
+    emailinput.style.display = "block";
   }
 }
 async function getMailData() {

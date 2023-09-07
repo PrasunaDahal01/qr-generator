@@ -2,7 +2,7 @@ const transporter = require("./mail.service");
 class Mail {
   async sendMail(body) {
     const qrCode = body.qrCode.replace("data:image/png;base64,", ""),
-      MailOptions = {
+      mailOptions = {
         from: "your-email@gmail.com",
         to: body.email,
         subject: "QR Code",
@@ -16,7 +16,7 @@ class Mail {
           },
         ],
       };
-    transporter.sendMail(mailOptions);
+    return transporter.sendMail(mailOptions);
   }
 }
 

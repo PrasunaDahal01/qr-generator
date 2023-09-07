@@ -8,10 +8,10 @@ router.post("/", async (req, res, next) => {
     // const info = await transporter.sendMail(mailOptions);
     console.log("Email sent:", info.messageId);
 
-    res.status(200).json("QR code sent successfully.");
+    res.status(200).json({ message: "QR code sent successfully," });
   } catch (error) {
     console.error("Error:", error);
-    res.status(500).json("Error sending QR code.");
+    res.status(500).json({ message: "Error sending QR code." });
   }
 });
 
