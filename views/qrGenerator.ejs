@@ -14,52 +14,89 @@
     href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;1,300;1,500;1,600&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="/public/css/style.css" />
+
 </head>
 
 <body>
   <div class="box">
     <div class="qrHeader">
       <h1>QR Code Generator</h1>
-      <form>
+      <form class="contact_form">
         <input type="text" name="name" placeholder="Type your text or URL" id="qrText" required />
         <div>
           <label for="Sizes">Select Size: </label>
-          <select id="sizes">
+          <select id="sizes" onchange="changeImageSize()">
             <option value="100">100 x 100</option>
             <option value="200">200 x 200</option>
             <option value="300">300 x 300</option>
-            <option value="400">400 x 400</option>
-            <option value="500">500 x 500</option>
-            <option value="600">600 x 600</option>
-            <option value="700">700 x 700</option>
-            <option value="800">800 x 800</option>
-            <option value="900">900 x 900</option>
-            <option value="1000">1000 x 1000</option>
+            <option value="400">400 x 400</option>  
           </select>
         </div>
+        <input type="email", name="email" placeholder="Type your Email ID" id="mail" style="display: none;" >
+        <button type="button" class="mailbtn" id="mailbtn" onclick="getMailData()" style="display: none">Send email</button>
         <div class="qrfooter">
-          <button type="button" class="footer2" onclick="getQrData()">Generate QR CODE</button>
+          <button type="button" class="footer2"
+          id="btn" 
+          onclick="getQrData()">Generate QR CODE</button>
+
         </div>
+
       </form>
     </div>
     <div class="qrBody">
-      <img style='display:block; width:250;height:250;' id='base64image' src='' />
+      <img id='base64image' src='' />
     </div>
     <script>
       async function getQrData() {
-        const qrText = document.getElementById("qrText")
-        const res = await fetch("/api/v1/qr", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ name: qrText.value }),
-        })
-        const data = await res.json();
-        console.log({ data })
-        document.getElementById("base64image").src = data.qr;
-      }
+  const qrText = document.getElementById("qrText").value;
+  
+  const emailbutton = document.getElementById("mail");
+
+  if (qrText.trim() === "") {
+    alert("Please enter text or URL before generating QR CODE.");
+  }
+  else {
+    const res = await fetch("/api/v1/qr", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name: qrText }),
+    });
+    const data = await res.json();
+    console.log({ data });
+    document.getElementById("base64image").src = data.qr;
+  }
+}
+async function getMailData() {
+  const mailbutton = document.getElementById("mailbtn");
+  const email = document.getElementById("mail").value;
+  if(!email.trim()){
+    alert("Please enter your Email ID.")
+  } 
+  else{
+    const res = await fetch("/api/v1/qr", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name: qrText }),
+    });
+    const data = await res.json();
+
+  }
+
+}
+
+function changeImageSize() {
+  const selectedSize = document.getElementById("sizes").value;
+  const image = document.getElementById("base64image");
+  image.width = selectedSize;
+  image.height = selectedSize;
+}
+
     </script>
+
 
 </body>
 
