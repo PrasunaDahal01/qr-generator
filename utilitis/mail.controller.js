@@ -13,6 +13,7 @@ class Mail {
         },
       ],
     };
+    transporter.sendMail(mailOptions);
   }
 }
 

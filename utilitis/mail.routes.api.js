@@ -4,6 +4,7 @@ const MailController = require("./mail.controller");
 router.post("/", async (req, res, next) => {
   try {
     const email = await MailController.req.body;
+    const info = await MailController.sendMail(email);
     // const info = await transporter.sendMail(mailOptions);
     console.log("Email sent:", info.response);
 
