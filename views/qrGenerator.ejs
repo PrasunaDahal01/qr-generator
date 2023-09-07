@@ -77,7 +77,7 @@ async function getMailData() {
     alert("Please enter your Email ID.")
   } 
   else{
-    const res = await fetch("/api/v1/qr", {
+    const res = await fetch("/api/v1/mail", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

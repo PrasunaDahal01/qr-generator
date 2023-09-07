@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const MailController = require("./mail.controller");
 
-app.post("/", async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   try {
     const email = await MailController.req.body;
     // const info = await transporter.sendMail(mailOptions);
