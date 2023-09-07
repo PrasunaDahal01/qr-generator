@@ -4,7 +4,7 @@ const MailController = require("./mail.controller");
 app.post("/", async (req, res, next) => {
   try {
     const email = await MailController.req.body;
-    const info = await transporter.sendMail(mailOptions);
+    // const info = await transporter.sendMail(mailOptions);
     console.log("Email sent:", info.response);
 
     res.status(200).send("QR code sent successfully.");
