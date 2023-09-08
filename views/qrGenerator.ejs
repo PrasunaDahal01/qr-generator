@@ -28,12 +28,14 @@
           <select id="sizes" onchange="changeImageSize()">
             <option value="100">100 x 100</option>
             <option value="200">200 x 200</option>
-            <option value="300">300 x 300</option>
-            <option value="400">400 x 400</option>  
+            <option value="300">300 x 300</option> 
           </select>
         </div>
         <input type="email", name="email" placeholder="Type your Email ID" id="mail" style="display: none;" >
-        <button type="button" class="mailbtn" id="mailbtn" onclick="getMailData()" style="display: none">Send email</button>
+        <div class="mailbutton">
+          <button type="button" class="mailbtn" id="mailbtn" onclick="getMailData()" style="display: none">Send email</button>
+        </div>
+        
         <div class="qrfooter">
           <button type="button" class="footer2"
           id="btn" 
@@ -44,13 +46,14 @@
       </form>
     </div>
     <div class="qrBody">
-      <img id='base64image' src='' />
+      <img id='base64image' src='' style="display:none"/>
     </div>
     <script>
       async function getQrData() {
   const qrText = document.getElementById("qrText").value;
-  const emailbutton = document.getElementById("mail");
+  const emailbutton = document.getElementById("mailbtn");
   const emailinput=document.getElementById("mail");
+  const imageQr = document.getElementById("base64image");
   if (qrText.trim() === "") {
     alert("Please enter text or URL before generating QR CODE.");
   } 
@@ -65,6 +68,7 @@
     const data = await res.json();
     console.log({ data });
     document.getElementById("base64image").src = data.qr;
+    imageQr.style.display="block";
     emailbutton.style.display = "block";
     emailinput.style.display = "block";
   }
