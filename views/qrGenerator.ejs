@@ -80,7 +80,7 @@ async function getMailData() {
     alert("Please enter your Email ID.")
   } 
   else{
-    const qr = document.getElementByID("base64image").src;
+    const qr = document.getElementById("base64image").src;
     const res = await fetch("/api/v1/mail", {
       method: "POST",
       headers: {
